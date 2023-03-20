@@ -114,17 +114,17 @@ if (session_start()) {
             <h1 class="h1 mb-3 fw-normal text-center">Register Here</h1>
             <div class="row">
                 <div class="col">
-                    <input type="text" required class="form-control" placeholder="First name" name="firstName" aria-label="First name">
+                    <input type="text" required class="form-control" placeholder="First name" name="firstName" aria-label="First name" autocomplete="off">
                 </div>
                 <div class="col">
-                    <input type="text" required class="form-control" placeholder="Last name" name="lastName" aria-label="Last name">
+                    <input type="text" required class="form-control" placeholder="Last name" name="lastName" aria-label="Last name" autocomplete="off">
                 </div>
 
             </div>
             <div class="row">
                 <div class="col">
                     <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" required class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp">
+                    <input type="email" required class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" autocomplete="off">
                     <div id="emailHelp" class="form-text">
                         This email is your Username.
                     </div>

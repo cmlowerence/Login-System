@@ -10,7 +10,7 @@ $s_password = 'root';
 $s_database = 'web_dev';
 $conn = new mysqli($host, $s_user, $s_password, $s_database);
 
-function user_exist($user, $table, $conn) {
+/*function user_exist($user, $table, $conn) {
     if ($conn->connect_error) {
         die("Connection Error: " .$conn->connect_error);
     }
@@ -22,7 +22,11 @@ function user_exist($user, $table, $conn) {
         $user_exist = false;
     }
     return $user_exist;
-}
+}*/
+session_start();
+$_SERVER['user_exist']=false;
+$_SERVER['loggedIn']=false;
+$user_exist;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -34,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $query = "SELECT First_Name, Last_Name FROM $table WHERE Username = '$username' and Password = Password('$password')";
     $result = $conn->query($query);
     if ($result->num_rows == 1) {
-        session_start();
+        $user_exist = true;
         $row = mysqli_fetch_assoc($result);
         global $firstName,
         $lastName;
@@ -44,6 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['user'] = "$firstName $lastName";
         header("Location: ". BASE_URL.'src/pages/welcome.php');
         exit();
+    } else {
+        $user_exist = false;
     }
 
 
@@ -155,7 +161,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <h1 class="h1 mb-3 fw-normal">Sign in</h1>
 
             <div class="form-floating">
-                <input type="email" class="form-control" name="username" id="floatingInput" placeholder="name@example.com">
+                <input type="email" class="form-control" name="username" id="floatingInput" placeholder="name@example.com" autocomplete="off">
                 <label for="floatingInput">Email address</label>
             </div>
             <div class="form-floating">
@@ -164,7 +170,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <button class="w-100 btn btn-lg btn-primary" name="login" type="submit">Log in</button>
             <?php
-            
+            if ($_SERVER['REQUEST_METHOD']=='POST' && !$user_exist) {
+                echo("<p class = 'text-danger'>Username of password in wrong.</p>");
+            }
             ?>
         </form>
     </main>
