@@ -78,8 +78,8 @@
         <div class="cover-container d-flex w-100 p-3 mx-auto flex-column">
             <h3 class="float-md-center mb-0 text-primary">Welcome To <span class="display-4 text-success">N_Level</span>
             </h3>
-            Log in to our plateform
         </div>
+        
     </main>
 
 

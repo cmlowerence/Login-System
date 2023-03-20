@@ -17,7 +17,7 @@
                         <a class="nav-link active" aria-current="page" href="<?php echo BASE_URL ?>">Home</a>
                     </li>
                     <?php
-                    if (CURRENT_FILE != 'register.php'||CURRENT_FILE!='welcome.php') {
+                    if (CURRENT_FILE != 'register.php'&& CURRENT_FILE!='welcome.php') {
                         echo('                    <li class="nav-item">
                         <a class=" btn btn-success" href="'.BASE_URL.'src/pages/register.php">Sign Up</a>
                     </li>');
@@ -25,7 +25,7 @@
                     ?>
 
                     <?php
-                    if (CURRENT_FILE != 'login.php'|| CURRENT_FILE!='welcome.php') {
+                    if (CURRENT_FILE != 'login.php' && CURRENT_FILE!='welcome.php') {
                         echo('                    <li class="nav-item">
                         <a class="btn btn-success" href="'.BASE_URL.'src/pages/login.php">Log In</a>
                     </li>');
